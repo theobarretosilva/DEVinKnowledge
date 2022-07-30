@@ -10,6 +10,71 @@
         <title>DEVinKnowledge</title>
     </head>
     <body>
-        
+        <div>
+            <img src="assets/imgs/Logo - DEVinKnowledge.png" alt="Logo DEVinKnowledge">
+            <h1>DEVinKnowledge</h1>
+            <p>Aprenda, interaja e compartilhe sua experiência com o mundo!</p>
+        </div>
+        <form>
+            <div>
+                <label for="inputTitulo" class="labelInput">Título</label>
+                <input id="inputTitulo" type="text" placeholder="Título da sua dica" minlength="8" maxlength="64" required>
+            </div>
+            <div>
+                <label for="inputSkill" class="labelInput">Linguagem/Skill</label>
+                <input type="text" id="inputSkill" required minlength="8" maxlength="32" placeholder="A linguagem ou skill da dica">
+            </div>
+            <div>
+                <label for="inputCategoria" class="labelInput">Categoria</label>
+                <select id="inputCategoria" required>
+                    <option selected disabled value="">Selecione a categoria</option>
+                    <option value="frontend">FrontEnd</option>
+                    <option value="backend">BackEnd</option>
+                    <option value="fullstack">FullStack</option>
+                    <option value="comportamental">Comportamental/Soft</option>
+                </select>
+            </div>
+            <div>
+                <label for="inputText" class="labelInput">Descrição</label>
+                <textarea id="inputText" minlength="16" maxlength="1024" placeholder="Escreva aqui a sua dica" cols="40" rows="12" required></textarea>
+            </div>
+            <div>
+                <label for="inputUrl" class="labelInput">Vídeo do YouTube</label>
+                <input id="inputUrl" type="url"> <!-- TEM QUE VALIDAR O URL https://www.horadecodar.com.br/2022/04/23/verificar-se-string-e-url-em-javascript/ -->
+            </div>
+            <div>
+                <button type="submit">Mandar a dica</button>
+                <button type="reset">Limpar dados</button>
+            </div>
+        </form>
+        <nav>
+            <div>
+                <div>
+                    <h3>Total</h3>
+                    <p>38</p>
+                </div>
+                <div>
+                    <h3>FrontEnd</h3>
+                    <p>12</p>
+                </div>
+                <div>
+                    <h3>BackEnd</h3>
+                    <p>7</p>
+                </div>
+                <div>
+                    <h3>FullStack</h3>
+                    <p>5</p>
+                </div>
+                <div>
+                    <h3>SoftSkill</h3>
+                    <p>14</p>
+                </div>
+            </div>
+            <div>
+                <input type="text" id="pesquisar" placeholder="Pesquise uma dica">
+                <img src="assets/imgs/pesquisar.png" alt="Pesquisar">
+                <img src="assets/imgs/excluir.png" alt="Excluir">
+            </div>
+        </nav>
     </body>
 </html>
