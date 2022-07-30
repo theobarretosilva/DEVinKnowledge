@@ -1,9 +1,9 @@
-export const modal = document.getElementsByClassName('modal');
-export const mudarModal = () => {
-    const actualStyle = modal.style.display;
+export const modalSucesso = document.getElementsByClassName('modal');
+export const mudarModalSucesso = () => {
+    const actualStyle = modalSucesso.style.display;
     if(actualStyle == 'block'){
-        modal.style.display = 'none'
+        modalSucesso.style.display = 'none'
     }else{
-        modal.style.display = 'block'
+        modalSucesso.style.display = 'block'
     }
 }
