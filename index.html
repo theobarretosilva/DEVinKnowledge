@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="assets/js/index.js"></script>
+        <script type="module" src="assets/js/index.js"></script>
         <link rel="stylesheet" type="text/css" href="assets/css/index.css">
         <link rel="shortcut icon" href="assets/imgs/Logo - DEVinKnowledge.png">
         <title>DEVinKnowledge</title>
@@ -43,8 +43,8 @@
                 <input id="inputUrl" type="url"> <!-- TEM QUE VALIDAR O URL https://www.horadecodar.com.br/2022/04/23/verificar-se-string-e-url-em-javascript/ -->
             </div>
             <div>
-                <button type="submit">Mandar a dica</button>
-                <button type="reset">Limpar dados</button>
+                <button id="enviarDica" type="button">Enviar dica</button>
+                <button id="limparForm" type="reset">Limpar dados</button>
             </div>
         </form>
         <nav>
