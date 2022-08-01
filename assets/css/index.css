@@ -9,8 +9,8 @@
 }
 
 .logoIntro{
-    padding-top: 8px;
-    padding-left: 25px;
+    padding-top: 5px;
+    padding-left: 20px;
     padding-right: 40px;
 }
 .logoIntro img{
@@ -24,15 +24,17 @@
     font-family: 'Arbutus Slab', sans-serif;
     margin-bottom: 0;
     font-size: 22px;
+    color: #be981b;
 }
 #pIntro{
     font-family: 'Arbutus Slab', sans-serif;
-    margin-top: 4px;
+    margin-top: 0;
     font-size: 16px;
+    color: antiquewhite;
 }
 
 .formDica{
-    padding-top: 20px;
+    padding-top: 10px;
     padding-left: 20px;
 }
 .labelInput{
@@ -42,8 +44,7 @@
 }
 
 .input{
-    margin-top: 1px;
-    padding-right: 142px;
+    width: 78%;
     padding-left: 6px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -52,11 +53,42 @@
     background-color: #0B0C0C;
     -webkit-box-shadow: -6px 6px 23px 0px rgba(228,182,26,0.1); 
     box-shadow: -6px 6px 23px 0px rgba(228,182,26,0.1);
+    color: whitesmoke;
+    font-family: 'Arbutus Slab', sans-serif;
+}
+
+.textArea{
+    border-radius: 6px;
+    border: 1.5px solid #E9EAEC;
+    background-color: #0B0C0C;
+    -webkit-box-shadow: -6px 6px 23px 0px rgba(228,182,26,0.1); 
+    box-shadow: -6px 6px 23px 0px rgba(228,182,26,0.1);
     color: white;
+    font-family: 'Arbutus Slab', sans-serif;
+    padding-left: 6px;
+    padding-top: 6px;
+    width: 80%;
 }
 
 #inputCategoria{
-    padding-right: 160px;
+    width: 82%;
+}
+
+#inputLink{
+    width: 80%;
+}
+
+#enviarDica{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-family: 'Arbutus Slab', sans-serif;
+}
+
+#limparForm{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 100px;
+    font-family: 'Arbutus Slab', sans-serif;
 }
 
 .navegacao{
