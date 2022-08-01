@@ -1,9 +1,9 @@
 export const modalSucesso = document.getElementsByClassName('modal');
 export const mudarModalSucesso = () => {
-    const actualStyle = modalSucesso.style.display;
+    const actualStyle = modalSucesso[0].style.display;
     if(actualStyle == 'block'){
-        modalSucesso.style.display = 'none'
+        modalSucesso[0].style.display = 'none'
     }else{
-        modalSucesso.style.display = 'block'
+        modalSucesso[0].style.display = 'block'
     }
 }
