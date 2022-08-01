@@ -47,9 +47,16 @@
     padding-left: 6px;
     padding-top: 6px;
     padding-bottom: 6px;
-    border-radius: 7px;
-    border: 2px solid #0B0C0C;
-    
+    border-radius: 6px;
+    border: 1.5px solid #E9EAEC;
+    background-color: #0B0C0C;
+    -webkit-box-shadow: -6px 6px 23px 0px rgba(228,182,26,0.1); 
+    box-shadow: -6px 6px 23px 0px rgba(228,182,26,0.1);
+    color: white;
+}
+
+#inputCategoria{
+    padding-right: 160px;
 }
 
 .navegacao{
