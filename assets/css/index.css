@@ -31,16 +31,17 @@
     margin-top: 0;
     font-size: 16px;
     color: antiquewhite;
+    margin-bottom: 5px;
 }
 
 .formDica{
     padding-top: 10px;
     padding-left: 20px;
 }
+
 .labelInput{
     color: white;
     font-family: 'Arbutus Slab', sans-serif;
-    padding-top: 20px;
 }
 
 .input{
@@ -78,10 +79,40 @@
     width: 80%;
 }
 
-#enviarDica{
-    padding-top: 3px;
-    padding-bottom: 3px;
-    font-family: 'Arbutus Slab', sans-serif;
+.button{
+    position: relative;
+    width: 82px;
+    height: 30px;
+    font-size: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: width .5s;
+    border-radius: .5s;
+}
+.button *{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity .25s;
+}
+.icon{
+    opacity: 0;
+}
+.button:focus{
+    width: 30px;
+    background-color: #44c08a;
+    border-radius: 50%;
+}
+.button:focus .text{
+    opacity: 0;
+}
+.button:focus .icon{
+    opacity: 1;
+    transition-delay: .5s;
 }
 
 #limparForm{
@@ -97,6 +128,29 @@
     right: 0;
 }
 
-#tituloCaract{
-    display: inline-block;
+#dicasPorCateg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#pesquisar{
+    background-color: #0b0c0c00;
+    border-radius: 20px;
+}
+#imgPesquisa{
+    width: 20px;
+    padding: 5px;
+}
+
+.cardDicas{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    border: 2px solid black;
+    padding: 20px;
+    text-align: center;
+}
+
+.botoesCard{
+    margin-right: 0;
 }

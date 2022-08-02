@@ -1,6 +1,9 @@
 import {mudarModalSucesso} from "../../modals/sucesso/sucesso.js";
 import {modalSucesso} from "../../modals/sucesso/sucesso.js";
 
+
+
+
 const btnEnviar = document.getElementById('enviarDica');
 
 window.onclick = function(event){
