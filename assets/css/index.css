@@ -69,6 +69,7 @@
     padding-left: 6px;
     padding-top: 6px;
     width: 90%;
+    resize: none;
 }
 
 #inputCategoria{
@@ -250,4 +251,8 @@ header{
 }
 #imgVideoDica{
     width: 25px;
+}
+
+#idElemento{
+    visibility: hidden;
 }
