@@ -71,7 +71,7 @@ function criarCard(){
             <h1>${element.titulo}</h1>
             <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
             <p><strong>Categoria: </strong>${element.categoria}</p>
-            <p>${element.descricao}</p>
+            <p id="descricaoCard">${element.descricao}</p>
             <div class="botoesCard">
                 <button id="deletaDica"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
                 <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>

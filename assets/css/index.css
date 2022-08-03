@@ -256,3 +256,6 @@ header{
 #idElemento{
     visibility: hidden;
 }
+#descricaoCard{
+    width: 150px;
+}
