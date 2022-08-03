@@ -45,7 +45,7 @@
 }
 
 .input{
-    width: 78%;
+    width: 90%;
     padding-left: 6px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -68,89 +68,165 @@
     font-family: 'Arbutus Slab', sans-serif;
     padding-left: 6px;
     padding-top: 6px;
-    width: 80%;
+    width: 90%;
 }
 
 #inputCategoria{
-    width: 82%;
+    width: 93%;
 }
 
 #inputLink{
-    width: 80%;
+    width: 90%;
 }
 
 .button{
-    position: relative;
-    width: 82px;
-    height: 30px;
-    font-size: 10px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: width .5s;
-    border-radius: .5s;
-}
-.button *{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity .25s;
-}
-.icon{
-    opacity: 0;
-}
-.button:focus{
-    width: 30px;
-    background-color: #44c08a;
-    border-radius: 50%;
-}
-.button:focus .text{
-    opacity: 0;
-}
-.button:focus .icon{
-    opacity: 1;
-    transition-delay: .5s;
+    width: 120px;
+    height: 35px;
+    font-family: 'Arbutus Slab', sans-serif;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 #limparForm{
-    padding-top: 3px;
-    padding-bottom: 3px;
-    margin-left: 100px;
+    margin-left: 93px;
+    width: 123px;
+    height: 35px;
     font-family: 'Arbutus Slab', sans-serif;
+    border-radius: 6px;
+    background-color: white;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+header{
+    height: auto;
+    top: 0;
 }
 
 .navegacao{
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 2;
+    width: 71.4%;
+    background-color: white;
 }
 
 #dicasPorCateg{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
+}
+.tituloCateg{
+    width: 120px;
+    height: 110px;
+    margin-top: 15px;
+    margin-bottom: 37px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;}
+
+.tituloCateg h4{
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Arbutus Slab', sans-serif;
+    margin-top: 18px;
+}
+.tituloCateg p{
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Arbutus Slab', sans-serif;
+}
+
+.pesquisaDicas{
+    position: fixed;
+    right: 0;
+    width: 70.3%;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    z-index: 1;
+    margin-bottom: 0;
+}
+#barraPesquisa{
+    width: 796px;
+    height: 25px;
+    border: 2.5px solid #2A2E34;
+    border-radius: 14px;
+    padding-left: 12px;
+    padding-bottom: 3px;
+    font-family: 'Arbutus Slab', sans-serif;
+    font-size: 16px;
+    color: black;
+}
+
+#imgPesquisa{
+    width: 22px;
+    padding-top: 3px;
 }
 #pesquisar{
-    background-color: #0b0c0c00;
-    border-radius: 20px;
+    background-color: #2A2E34;
+    border-radius: 14px;
+    margin-left: 8px;
 }
-#imgPesquisa{
-    width: 20px;
-    padding: 5px;
+#limparPesquisa{
+    background-color: #2A2E34;
+    border-radius: 14px;
+    margin-left: 8px;
+}
+#imgLimpa{
+    width: 22px;
+    padding-top: 3px;
 }
 
 .cardDicas{
-    position: fixed;
+    position: absolute;
+    top: 220px;
     right: 0;
-    bottom: 0;
-    border: 2px solid black;
     padding: 20px;
+    padding-top: 20px;
     text-align: center;
+    width: 68.5%;
+    background-color: #666666;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: ;
+}
+
+.dica{
+    border: 2px solid black;
+    margin-top: 20px;
 }
 
 .botoesCard{
     margin-right: 0;
+}
+
+#deletaDica{
+    border-radius: 15px;
+}
+#imgDeletaDica{
+    width: 25px;
+}
+#editaDica{
+    border-radius: 15px;
+}
+#imgEditaDica{
+    width: 25px;
+}
+#videoDica{
+    border-radius: 15px;
+}
+#imgVideoDica{
+    width: 25px;
 }

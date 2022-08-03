@@ -28,7 +28,7 @@
                 <div>
                     <label for="input" class="labelInput">Linguagem/Skill</label>
                     <br>
-                    <input type="text" class="input" minlength="4" maxlength="16" placeholder="A linguagem ou skill da dica" required>
+                    <input type="text" class="input" minlength="4" maxlength="16" placeholder="A linguagem/skill da sua dica" required>
                 </div>
                 <br>
                 <div>
@@ -52,57 +52,91 @@
                 <div>
                     <label for="inputUrl" class="labelInput">Vídeo do YouTube</label>
                     <br>
-                    <input id="inputLink" placeholder="Link do vídeo do YouTube" class="input" type="url"> <!-- TEM QUE VALIDAR O URL https://www.horadecodar.com.br/2022/04/23/verificar-se-string-e-url-em-javascript/ -->
+                    <input id="inputLink" placeholder="Link do vídeo do YouTube" class="input" type="url">
                 </div>
                 <br>
                 <div>
-                    <button class="button" type="button">
-                        <span class="text">Enviar dica</span>
-                        <i class="ri-check-line icon"></i>
-                    </button>
+                    <button class="button" type="button">Enviar dica</button>
                     <button id="limparForm" type="reset">Limpar dados</button>
                 </div>
             </form>
         </aside>
-        <nav class="navegacao">
-            <div id="dicasPorCateg">
-                <div class="tituloCaract">
-                    <h3>Total</h3>
-                    <p>38</p>
+        <header>
+            <nav class="navegacao">
+                <div id="dicasPorCateg">
+                    <div class="tituloCateg">
+                        <h4>Total</h4>
+                        <p>38</p>
+                    </div>
+                    <div class="tituloCateg">
+                        <h4>FrontEnd</h4>
+                        <p>12</p>
+                    </div>
+                    <div class="tituloCateg">
+                        <h4>BackEnd</h4>
+                        <p>7</p>
+                    </div>
+                    <div class="tituloCateg">
+                        <h4>FullStack</h4>
+                        <p>5</p>
+                    </div>
+                    <div class="tituloCateg">
+                        <h4>SoftSkill</h4>
+                        <p>14</p>
+                    </div>
                 </div>
-                <div>
-                    <h3>FrontEnd</h3>
-                    <p>12</p>
+                <div class="pesquisaDicas">
+                    <input type="text" id="barraPesquisa" placeholder="Pesquise uma dica">
+                    <button id="pesquisar"><img id="imgPesquisa" src="./assets/imgs/pesquisar.png" alt="Botão para pesquisar"></button>
+                    <button id="limparPesquisa"><img id="imgLimpa" src="./assets/imgs/limpar.png" alt="Botão para limpar a pesquisa"></button>
                 </div>
-                <div>
-                    <h3>BackEnd</h3>
-                    <p>7</p>
-                </div>
-                <div>
-                    <h3>FullStack</h3>
-                    <p>5</p>
-                </div>
-                <div>
-                    <h3>SoftSkill</h3>
-                    <p>14</p>
-                </div>
-            </div>
-            <div>
-                <input type="text" id="barraPesquisa" placeholder="Pesquise uma dica">
-                <button id="pesquisar"><img id="imgPesquisa" src="./assets/imgs/pesquisar.png" alt="Botão para pesquisar"></button>
-                <button id="limparPesquisa"><img id="imgLimpa" src="./assets/imgs/limpar.png" alt="Botão para limpar a pesquisa"></button>
-            </div>
-        </nav>
+            </nav>
+        </header>
         <main>
             <div class="cardDicas">
-                <h1>Grid vs Flex-Box</h1>
-                <p><strong>Linguagem/Skill: </strong>CSS</p>
-                <p><strong>Categoria: </strong>FrontEnd</p>
-                <p>Lorem ipsum dolor sit amet consectetur<br>adipisicing elit.brAccusantium,<br>ipsa excepturi incidunt libero<br>saepe deserunt illo necessitatibus<br>voluptatibus omnis tempora!</p>
-                <div class="botoesCard">
-                    <button id="deletaDica"><img src="./assets/imgs/deletaDica" alt="Botão para deletar dica"></button>
-                    <button id="editaDica"><img src="./assets/imgs/editaDica" alt="Botão para editar dica"></button>
-                    <button id="videoDica"><img src="./assets/imgs/videoDica" alt="Botão para ver o vídeo da dica"></button>
+                <div class="dica">
+                    <h1>Grid vs Flex-Box</h1>
+                    <p><strong>Linguagem/Skill: </strong>CSS</p>
+                    <p><strong>Categoria: </strong>FrontEnd</p>
+                    <p>Lorem ipsum dolor sit amet consectetur<br>adipisicing elit.brAccusantium,<br>ipsa excepturi incidunt libero<br>saepe deserunt illo necessitatibus<br>voluptatibus omnis tempora!</p>
+                    <div class="botoesCard">
+                        <button id="deletaDica"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
+                        <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
+                        <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
+                    </div>
+                </div>
+                <div class="dica">
+                    <h1>Grid vs Flex-Box</h1>
+                    <p><strong>Linguagem/Skill: </strong>CSS</p>
+                    <p><strong>Categoria: </strong>FrontEnd</p>
+                    <p>Lorem ipsum dolor sit amet consectetur<br>adipisicing elit.brAccusantium,<br>ipsa excepturi incidunt libero<br>saepe deserunt illo necessitatibus<br>voluptatibus omnis tempora!</p>
+                    <div class="botoesCard">
+                        <button id="deletaDica"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
+                        <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
+                        <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
+                    </div>
+                </div>
+                <div class="dica">
+                    <h1>Grid vs Flex-Box</h1>
+                    <p><strong>Linguagem/Skill: </strong>CSS</p>
+                    <p><strong>Categoria: </strong>FrontEnd</p>
+                    <p>Lorem ipsum dolor sit amet consectetur<br>adipisicing elit.brAccusantium,<br>ipsa excepturi incidunt libero<br>saepe deserunt illo necessitatibus<br>voluptatibus omnis tempora!</p>
+                    <div class="botoesCard">
+                        <button id="deletaDica"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
+                        <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
+                        <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
+                    </div>
+                </div>
+                <div class="dica">
+                    <h1>Grid vs Flex-Box</h1>
+                    <p><strong>Linguagem/Skill: </strong>CSS</p>
+                    <p><strong>Categoria: </strong>FrontEnd</p>
+                    <p>Lorem ipsum dolor sit amet consectetur<br>adipisicing elit.brAccusantium,<br>ipsa excepturi incidunt libero<br>saepe deserunt illo necessitatibus<br>voluptatibus omnis tempora!</p>
+                    <div class="botoesCard">
+                        <button id="deletaDica"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
+                        <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
+                        <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
+                    </div>
                 </div>
             </div>
         </main>
