@@ -44,4 +44,7 @@ function cadastrarDica(){
 
     dados.push(auxRegistro);
     localStorage.setItem(titulo, JSON.stringify(dados));
+
+    const tituloLC = localStorage.titulo[descricao];
+    console.log(tituloLC);
 }
