@@ -52,8 +52,6 @@ function cadastrarDica(event){
 
     dados.push(auxRegistro);
     localStorage.setItem("Dados", JSON.stringify(dados));
-
-    //JSON.parse(localStorage.getItem("Dados")).filter(element => element.titulo == );
     
     criarCard();
 }
@@ -84,6 +82,14 @@ function criarCard(){
     listaCards.innerHTML = cards;
 }
 
-function deletaCard(){
-    
+/*function deletaCard(element){
+    const dados = JSON.parse(localStorage.getItem("Dados"));
+    const idCard = document.getElementById('idElemento');
+
+    let idCard = dados.find(function (idDoCard) {
+        return idDoCard.id === 
+    })
 }
+
+const btnDeleta = document.getElementById('deletaDica');
+btnDeleta.onclick = deletaCard;*/

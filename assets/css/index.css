@@ -89,6 +89,7 @@
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     font-weight: bold;
     font-size: 16px;
+    cursor: pointer;
 }
 
 #limparForm{
@@ -101,6 +102,7 @@
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     font-weight: bold;
     font-size: 16px;
+    cursor: pointer;
 }
 
 header{
@@ -178,14 +180,14 @@ header{
     border-radius: 14px;
     margin-left: 8px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-
+    cursor: pointer;
 }
 #limparPesquisa{
     background-color: #2A2E34;
     border-radius: 14px;
     margin-left: 8px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-
+    cursor: pointer;
 }
 #imgLimpa{
     width: 22px;
@@ -216,6 +218,8 @@ header{
     padding-bottom: 16px;
     background-color: #d6d6d6;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 250px;
+    height: 250px;
 }
 
 .botoesCard{
@@ -227,6 +231,9 @@ header{
     width: 42px;
     height: 42px;
     background-color: #2A2E34;
+    padding-bottom: 0;
+    bottom: 0;
+    cursor: pointer;
 }
 #imgDeletaDica{
     width: 25px;
@@ -237,6 +244,7 @@ header{
     height: 42px;
     padding-left: 8px;
     background-color: #2A2E34;
+    cursor: pointer;
 }
 #imgEditaDica{
     width: 25px;
@@ -248,14 +256,27 @@ header{
     padding-left: 7px;
     padding-top: 4px;
     background-color: #2A2E34;
+    cursor: pointer;
 }
 #imgVideoDica{
     width: 25px;
 }
 
+.dica h1{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 25px;
+}
 #idElemento{
     visibility: hidden;
+    margin: 0;
 }
 #descricaoCard{
-    width: 150px;
+    width: 100%;
+    overflow-wrap: break-word;  
+    word-wrap: break-word; 
+    word-break: break-word;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
