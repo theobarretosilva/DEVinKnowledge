@@ -34,7 +34,7 @@ function cadastrarDica(event){
     const descricao = document.getElementById('descricao').value;
     const linkYT = document.getElementById('inputLink').value;
 
-    var dados = JSON.parse(localStorage.getItem("Dados"));
+    let dados = JSON.parse(localStorage.getItem("Dados"));
 
     if(dados == null){
         localStorage.setItem("Dados", "[]");
@@ -42,7 +42,7 @@ function cadastrarDica(event){
     }
     
     const auxRegistro = {
-        id : new Date().getTime(), 
+        id : new Date().getTime(),
         titulo : titulo,
         linguagem : linguagem,
         categoria : categoria,
@@ -57,7 +57,7 @@ function cadastrarDica(event){
 }
 
 function criarCard(){
-    const dados = JSON.parse(localStorage.getItem("Dados"));
+    let dados = JSON.parse(localStorage.getItem("Dados"));
     const listaCards = document.getElementById('cardDicas');
     let cards = "";
 
@@ -72,7 +72,7 @@ function criarCard(){
             <p class="descricao" id="descricaoCard">${element.descricao}</p>
             <div class="botoesCard">
                 <button value="${element.id}" id="deletaDica" onclick="deletaCard(${element.id})"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
-                <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
+                <button value="${element.id}" id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
                 <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
             </div>
         </div>`
