@@ -34,7 +34,7 @@ function cadastrarDica(event){
     const descricao = document.getElementById('descricao').value;
     const linkYT = document.getElementById('inputLink').value;
 
-    let dados = JSON.parse(localStorage.getItem("Dados"));
+    var dados = JSON.parse(localStorage.getItem("Dados"));
 
     if(dados == null){
         localStorage.setItem("Dados", "[]");
@@ -42,7 +42,7 @@ function cadastrarDica(event){
     }
     
     const auxRegistro = {
-        id : new Date().getTime(),
+        id : new Date().getTime(), 
         titulo : titulo,
         linguagem : linguagem,
         categoria : categoria,
@@ -57,11 +57,7 @@ function cadastrarDica(event){
 }
 
 function criarCard(){
-<<<<<<< HEAD
     const dados = JSON.parse(localStorage.getItem("Dados") || "[]");
-=======
-    let dados = JSON.parse(localStorage.getItem("Dados"));
->>>>>>> c2a278f3d64619bc2e287c3119e7d4d8c0e507b0
     const listaCards = document.getElementById('cardDicas');
     let cards = "";
 
@@ -76,8 +72,8 @@ function criarCard(){
             <p class="descricao" id="descricaoCard">${element.descricao}</p>
             <div class="botoesCard">
                 <button value="${element.id}" id="deletaDica" onclick="deletaCard(${element.id})"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
-                <button value="${element.id}" id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
-                <a href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
+                <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
+                <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
             </div>
         </div>`
     });
@@ -119,28 +115,12 @@ function popularTagsCateg(){
     document.getElementById('pSoftSkill').innerText = tagSoftSkill;
 }
 
-<<<<<<< HEAD
 let barraDePesquisa = document.getElementById('barraPesquisa');
 let dados = JSON.parse(localStorage.getItem("Dados"));
 let tituloCard = document.getElementsByClassName('tituloDica');
 
 barraDePesquisa.addEventListener("input", e => {
     const value = e.target.value;
-=======
-function pesquisar(){
-    let barraDePesquisa = document.getElementById('barraPesquisa').value;
-    barraDePesquisa=barraDePesquisa.toLowerCase();
-    let tituloCard = document.getElementById('tituloDica').value.toLowerCase();
-    let card = document.getElementsByClassName('dica');
-
-    if(tituloCard.includes(barraDePesquisa)){
-        card.style.visibility="hidden";
-    }
-    else{
-        card.style.visibility="visible";
-    }
-    
->>>>>>> c2a278f3d64619bc2e287c3119e7d4d8c0e507b0
 
     console.log(tituloCard);
     
