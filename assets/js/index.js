@@ -72,8 +72,8 @@ function criarCard(){
             <p class="descricao" id="descricaoCard">${element.descricao}</p>
             <div class="botoesCard">
                 <button value="${element.id}" id="deletaDica" onclick="deletaCard(${element.id})"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
-                <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
-                <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
+                <button value="${element.id}" id="editaDica" onclick="editaCard(${element.id})"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
+                <a href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
             </div>
         </div>`
     });
@@ -175,9 +175,15 @@ btnDeleta.onclick = deletaCard;
 function editaCard(){
     let dados = JSON.parse(localStorage.getItem("Dados"));
 
-    document.getElementById('pTotal').innerText = tagTotal;
-    document.getElementById('pFrontEnd').innerText = tagFrontEnd;
-    document.getElementById('pBackEnd').innerText = tagBackEnd;
-    document.getElementById('pFullStack').innerText = tagFullStack;
-    document.getElementById('pSoftSkill').innerText = tagSoftSkill;
+    dados.forEach(element => {
+
+        document.getElementById('titulo').innerText = element;
+        document.getElementById('pFrontEnd').innerText = tagFrontEnd;
+        document.getElementById('pBackEnd').innerText = tagBackEnd;
+        document.getElementById('pFullStack').innerText = tagFullStack;
+        document.getElementById('pSoftSkill').innerText = tagSoftSkill;
+
+    })
+
+    
 }
