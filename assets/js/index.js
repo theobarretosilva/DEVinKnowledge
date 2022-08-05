@@ -118,16 +118,16 @@ function popularTagsCateg(){
 function pesquisar(){
     let barraDePesquisa = document.getElementById('barraPesquisa').value;
     barraDePesquisa=barraDePesquisa.toLowerCase();
-    let tituloCard = document.getElementById('tituloDica').value;
+    let tituloCard = document.getElementById('tituloDica').value.toLowerCase();
+    let card = document.getElementsByClassName('dica');
 
-    for(i = 0; i < tituloCard.lenght; i++){
-        if(!tituloCard[i].innerHTML.toLowerCase().includes(barraDePesquisa)){
-            tituloCard[i].style.display="none";
-        }
-        else{
-            tituloCard[i].style.display="list-item";
-        }
+    if(tituloCard.includes(barraDePesquisa)){
+        card.style.visibility="hidden";
     }
+    else{
+        card.style.visibility="visible";
+    }
+    
 
 }
 
