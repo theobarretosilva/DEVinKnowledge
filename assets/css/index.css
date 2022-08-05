@@ -271,12 +271,11 @@ header{
     visibility: hidden;
     margin: 0;
 }
-#descricaoCard{
-    width: 100%;
-    overflow-wrap: break-word;  
-    word-wrap: break-word; 
-    word-break: break-word;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+
+.descricao{
+    white-space: pre-wrap; /* CSS3 */
+    white-space: -moz-pre-wrap; /* Firefox */
+    white-space: -pre-wrap; /* Opera <7 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* IE */
 }

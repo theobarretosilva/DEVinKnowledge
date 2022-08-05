@@ -69,13 +69,12 @@ function criarCard(){
             <h1 id="tituloDica">${element.titulo}</h1>
             <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
             <p><strong>Categoria: </strong>${element.categoria}</p>
-            <p id="descricaoCard">${element.descricao}</p>
+            <p class="descricao" id="descricaoCard">${element.descricao}</p>
             <div class="botoesCard">
-                <button value="${element.id}" id="deletaDica"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
+                <button value="${element.id}" id="deletaDica" onclick="deletaCard(${element.id})"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
                 <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
                 <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
             </div>
-            <p value="${element.id}" id="idElemento">${element.id}</p>
         </div>`
     });
 
@@ -121,10 +120,6 @@ function pesquisar(){
     barraDePesquisa=barraDePesquisa.toLowerCase();
     let tituloCard = document.getElementById('tituloDica').value;
 
-    dados.forEach(element => {
-
-    })
-
     for(i = 0; i < tituloCard.lenght; i++){
         if(!tituloCard[i].innerHTML.toLowerCase().includes(barraDePesquisa)){
             tituloCard[i].style.display="none";
@@ -139,14 +134,17 @@ function pesquisar(){
 const btnPesquisa = document.getElementById('pesquisar');
 btnPesquisa.onclick = pesquisar;
 
-/*function deletaCard(element){
-    const dados = JSON.parse(localStorage.getItem("Dados"));
-    const idCard = document.getElementById('idElemento');
+function pegarCardPorId(card, id){
+    return card.id == id;
+}
 
-    let idCard = dados.find(function (idDoCard) {
-        return idDoCard.id === 
-    })
+function deletaCard(id){
+    let dados = JSON.parse(localStorage.getItem("Dados"));
+
+    let dadosCard = dados.find(card => card.id == id);
+
+    localStorage.removeItem("dados", dadosCard);
 }
 
 const btnDeleta = document.getElementById('deletaDica');
-btnDeleta.onclick = deletaCard;*/
+btnDeleta.onclick = deletaCard;
