@@ -28,31 +28,37 @@ document.body.onload = criarCard;
 function cadastrarDica(event){
     event.preventDefault();
 
-    const titulo = document.getElementById('titulo').value;
-    const linguagem = document.getElementById('linguagem').value;
-    const categoria = document.getElementById('inputCategoria').value;
-    const descricao = document.getElementById('descricao').value;
-    const linkYT = document.getElementById('inputLink').value;
-
-    var dados = JSON.parse(localStorage.getItem("Dados"));
-
-    if(dados == null){
-        localStorage.setItem("Dados", "[]");
-        dados = [];
+    const id = localStorage.getItem("CardEditado");
+    if(id){
+        mandarDicaDeVolta();
     }
+    else{
+        const titulo = document.getElementById('titulo').value;
+        const linguagem = document.getElementById('linguagem').value;
+        const categoria = document.getElementById('inputCategoria').value;
+        const descricao = document.getElementById('descricao').value;
+        const linkYT = document.getElementById('inputLink').value;
     
-    const auxRegistro = {
-        id : new Date().getTime(), 
-        titulo : titulo,
-        linguagem : linguagem,
-        categoria : categoria,
-        descricao : descricao,
-        linkYT : linkYT
+        var dados = JSON.parse(localStorage.getItem("Dados"));
+    
+        if(dados == null){
+            localStorage.setItem("Dados", "[]");
+            dados = [];
+        }
+        
+        const auxRegistro = {
+            id : new Date().getTime(), 
+            titulo : titulo,
+            linguagem : linguagem,
+            categoria : categoria,
+            descricao : descricao,
+            linkYT : linkYT
+        }
+    
+        dados.push(auxRegistro);
+        localStorage.setItem("Dados", JSON.stringify(dados));
     }
 
-    dados.push(auxRegistro);
-    localStorage.setItem("Dados", JSON.stringify(dados));
-    
     criarCard();
 }
 
@@ -90,7 +96,7 @@ let tagFullStack = 0;
 let tagSoftSkill = 0;
 
 function popularTagsCateg(){
-    const dados = JSON.parse(localStorage.getItem("Dados"));
+    const dados = JSON.parse(localStorage.getItem("Dados") || "[]");
     
     dados.forEach(element => {
         if(element.categoria == "FrontEnd"){
@@ -119,47 +125,6 @@ let barraDePesquisa = document.getElementById('barraPesquisa');
 let dados = JSON.parse(localStorage.getItem("Dados"));
 let tituloCard = document.getElementsByClassName('tituloDica');
 
-barraDePesquisa.addEventListener("input", e => {
-    const value = e.target.value;
-
-    console.log(tituloCard);
-    
-    dados.forEach(element => {
-        // let tituloDica = element.titulo;
-        // const isVisible = tituloDica.includes(value);
-        // tituloDica.element.classList.toggle("hide", !isVisible)
-    })
-
-    
-
-})
-
-
-// function pesquisar(){
-//     let barraDePesquisa = document.getElementById('barraPesquisa').value;
-//     barraDePesquisa=barraDePesquisa.toLowerCase();
-//     let tituloCard = document.getElementsByClassName('tituloDica');
-
-//     if(tituloCard.includes)
-
-//     for(i = 0; i < tituloCard.lenght; i++){
-//         if(!tituloCard[i].innerHTML.toLowerCase().includes(barraDePesquisa)){
-//             tituloCard[i].style.display="none";
-//         }
-//         else{
-//             tituloCard[i].style.display="list-item";
-//         }
-//     }
-
-// }
-
-const btnPesquisa = document.getElementById('pesquisar');
-btnPesquisa.onclick = pesquisar;
-
-function pegarCardPorId(card, id){
-    return card.id == id;
-}
-
 function deletaCard(id){
     let dados = JSON.parse(localStorage.getItem("Dados"));
     let dadosDoCard = dados.filter(card => card.id != id)
@@ -172,18 +137,44 @@ function deletaCard(id){
 const btnDeleta = document.getElementById('deletaDica');
 btnDeleta.onclick = deletaCard;
 
-function editaCard(){
+function editaCard(id){
+    let dados = JSON.parse(localStorage.getItem("Dados"));
+    let element = dados.find(card => card.id == id);
+
+    document.getElementById('titulo').value = element.titulo;
+    document.getElementById('linguagem').value = element.linguagem;
+    document.getElementById('inputCategoria').value = element.categoria;
+    document.getElementById('descricao').value = element.descricao;
+    document.getElementById('inputLink').value = element.linkYT;
+
+    localStorage.setItem("CardEditado", element.id)
+}
+
+function mandarDicaDeVolta(){
     let dados = JSON.parse(localStorage.getItem("Dados"));
 
-    dados.forEach(element => {
+    const id = parseInt(localStorage.getItem("CardEditado"));
+    const titulo = document.getElementById('titulo').value;
+    const linguagem = document.getElementById('linguagem').value;
+    const categoria = document.getElementById('inputCategoria').value;
+    const descricao = document.getElementById('descricao').value;
+    const linkYT = document.getElementById('inputLink').value;
+    
+    const card = {
+        id,
+        titulo,
+        linguagem,
+        categoria,
+        descricao,
+        linkYT,
+    }
 
-        document.getElementById('titulo').innerText = element;
-        document.getElementById('pFrontEnd').innerText = tagFrontEnd;
-        document.getElementById('pBackEnd').innerText = tagBackEnd;
-        document.getElementById('pFullStack').innerText = tagFullStack;
-        document.getElementById('pSoftSkill').innerText = tagSoftSkill;
-
+    const posicao = dados.findIndex((el) => {
+        return el.id == id;
     })
 
-    
+    dados.splice(posicao, 1, card);
+
+    localStorage.setItem("Dados", JSON.stringify(dados))
+    localStorage.setItem("CardEditado", "")
 }
