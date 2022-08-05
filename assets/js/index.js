@@ -143,8 +143,7 @@ function deletaCard(id){
 
     let dadosCard = dados.find(card => card.id == id);
 
-    console.log(dadosCard)
-    // localStorage.removeItem("dados", dadosCard);
+    localStorage.removeItem("dados", dadosCard);
 }
 
 const btnDeleta = document.getElementById('deletaDica');
