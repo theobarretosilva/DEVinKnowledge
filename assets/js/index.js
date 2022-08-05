@@ -57,7 +57,7 @@ function cadastrarDica(event){
 }
 
 function criarCard(){
-    const dados = JSON.parse(localStorage.getItem("Dados"));
+    const dados = JSON.parse(localStorage.getItem("Dados") || "[]");
     const listaCards = document.getElementById('cardDicas');
     let cards = "";
 
@@ -66,7 +66,7 @@ function criarCard(){
     dados.forEach(element => {
         cards += 
         `<div class="dica">
-            <h1 id="tituloDica">${element.titulo}</h1>
+            <h1 value=""${element.titulo} class="tituloDica" id="tituloDica">${element.titulo}</h1>
             <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
             <p><strong>Categoria: </strong>${element.categoria}</p>
             <p class="descricao" id="descricaoCard">${element.descricao}</p>
@@ -115,21 +115,43 @@ function popularTagsCateg(){
     document.getElementById('pSoftSkill').innerText = tagSoftSkill;
 }
 
-function pesquisar(){
-    let barraDePesquisa = document.getElementById('barraPesquisa').value;
-    barraDePesquisa=barraDePesquisa.toLowerCase();
-    let tituloCard = document.getElementById('tituloDica').value;
+let barraDePesquisa = document.getElementById('barraPesquisa');
+let dados = JSON.parse(localStorage.getItem("Dados"));
+let tituloCard = document.getElementsByClassName('tituloDica');
 
-    for(i = 0; i < tituloCard.lenght; i++){
-        if(!tituloCard[i].innerHTML.toLowerCase().includes(barraDePesquisa)){
-            tituloCard[i].style.display="none";
-        }
-        else{
-            tituloCard[i].style.display="list-item";
-        }
-    }
+barraDePesquisa.addEventListener("input", e => {
+    const value = e.target.value;
 
-}
+    console.log(tituloCard);
+    
+    dados.forEach(element => {
+        // let tituloDica = element.titulo;
+        // const isVisible = tituloDica.includes(value);
+        // tituloDica.element.classList.toggle("hide", !isVisible)
+    })
+
+    
+
+})
+
+
+// function pesquisar(){
+//     let barraDePesquisa = document.getElementById('barraPesquisa').value;
+//     barraDePesquisa=barraDePesquisa.toLowerCase();
+//     let tituloCard = document.getElementsByClassName('tituloDica');
+
+//     if(tituloCard.includes)
+
+//     for(i = 0; i < tituloCard.lenght; i++){
+//         if(!tituloCard[i].innerHTML.toLowerCase().includes(barraDePesquisa)){
+//             tituloCard[i].style.display="none";
+//         }
+//         else{
+//             tituloCard[i].style.display="list-item";
+//         }
+//     }
+
+// }
 
 const btnPesquisa = document.getElementById('pesquisar');
 btnPesquisa.onclick = pesquisar;
@@ -140,11 +162,22 @@ function pegarCardPorId(card, id){
 
 function deletaCard(id){
     let dados = JSON.parse(localStorage.getItem("Dados"));
+    let dadosDoCard = dados.filter(card => card.id != id)
 
-    let dadosCard = dados.find(card => card.id == id);
+    localStorage.setItem("Dados", JSON.stringify(dadosDoCard));
 
-    localStorage.removeItem("dados", dadosCard);
+    criarCard();
 }
 
 const btnDeleta = document.getElementById('deletaDica');
 btnDeleta.onclick = deletaCard;
+
+function editaCard(){
+    let dados = JSON.parse(localStorage.getItem("Dados"));
+
+    document.getElementById('pTotal').innerText = tagTotal;
+    document.getElementById('pFrontEnd').innerText = tagFrontEnd;
+    document.getElementById('pBackEnd').innerText = tagBackEnd;
+    document.getElementById('pFullStack').innerText = tagFullStack;
+    document.getElementById('pSoftSkill').innerText = tagSoftSkill;
+}
