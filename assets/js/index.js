@@ -66,21 +66,78 @@ function criarCard(){
     dados.forEach(element => {
         cards += 
         `<div class="dica">
-            <h1>${element.titulo}</h1>
+            <h1 id="tituloDica">${element.titulo}</h1>
             <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
             <p><strong>Categoria: </strong>${element.categoria}</p>
             <p id="descricaoCard">${element.descricao}</p>
             <div class="botoesCard">
-                <button id="deletaDica"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
+                <button value="${element.id}" id="deletaDica"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
                 <button id="editaDica"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
                 <button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button>
             </div>
-            <p id="idElemento">${element.id}</p>
+            <p value="${element.id}" id="idElemento">${element.id}</p>
         </div>`
     });
 
     listaCards.innerHTML = cards;
+
+    popularTagsCateg();
 }
+
+let tagTotal = 0;
+let tagFrontEnd = 0;
+let tagBackEnd = 0;
+let tagFullStack = 0;
+let tagSoftSkill = 0;
+
+function popularTagsCateg(){
+    const dados = JSON.parse(localStorage.getItem("Dados"));
+    
+    dados.forEach(element => {
+        if(element.categoria == "FrontEnd"){
+            tagFrontEnd+=1;
+        }
+        else if(element.categoria == "BackEnd"){
+            tagBackEnd+=1;
+        }
+        else if(element.categoria == "FullStack"){
+            tagFullStack+=1;
+        }
+        else if(element.categoria == "Comportamental/Soft"){
+            tagSoftSkill+=1;
+        }
+        tagTotal+=1
+    })
+
+    document.getElementById('pTotal').innerText = tagTotal;
+    document.getElementById('pFrontEnd').innerText = tagFrontEnd;
+    document.getElementById('pBackEnd').innerText = tagBackEnd;
+    document.getElementById('pFullStack').innerText = tagFullStack;
+    document.getElementById('pSoftSkill').innerText = tagSoftSkill;
+}
+
+function pesquisar(){
+    let barraDePesquisa = document.getElementById('barraPesquisa').value;
+    barraDePesquisa=barraDePesquisa.toLowerCase();
+    let tituloCard = document.getElementById('tituloDica').value;
+
+    dados.forEach(element => {
+
+    })
+
+    for(i = 0; i < tituloCard.lenght; i++){
+        if(!tituloCard[i].innerHTML.toLowerCase().includes(barraDePesquisa)){
+            tituloCard[i].style.display="none";
+        }
+        else{
+            tituloCard[i].style.display="list-item";
+        }
+    }
+
+}
+
+const btnPesquisa = document.getElementById('pesquisar');
+btnPesquisa.onclick = pesquisar;
 
 /*function deletaCard(element){
     const dados = JSON.parse(localStorage.getItem("Dados"));
