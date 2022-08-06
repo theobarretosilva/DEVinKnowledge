@@ -62,7 +62,7 @@ function cadastrarDica(event){
     criarCard();
 }
 
-function criarCard(){
+function criarCard(array){
     const dados = JSON.parse(localStorage.getItem("Dados") || "[]");
     const listaCards = document.getElementById('cardDicas');
     let cards = "";
@@ -178,3 +178,46 @@ function mandarDicaDeVolta(){
     localStorage.setItem("Dados", JSON.stringify(dados))
     localStorage.setItem("CardEditado", "")
 }
+
+function criarCardPesquisa(array){
+    const dados = JSON.parse(localStorage.getItem("Dados") || "[]");
+    const listaCards = document.getElementById('cardDicas');
+    let cards = "";
+
+    listaCards.innerHTML = "";
+
+    array.forEach(element => {
+        cards += 
+        `<div class="dica">
+            <h1 value=""${element.titulo} class="tituloDica" id="tituloDica">${element.titulo}</h1>
+            <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
+            <p><strong>Categoria: </strong>${element.categoria}</p>
+            <p class="descricao" id="descricaoCard">${element.descricao}</p>
+            <div class="botoesCard">
+                <button value="${element.id}" id="deletaDica" onclick="deletaCard(${element.id})"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
+                <button value="${element.id}" id="editaDica" onclick="editaCard(${element.id})"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
+                <a href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
+            </div>
+        </div>`
+    });
+
+    listaCards.innerHTML = cards;
+
+    popularTagsCateg();
+}
+
+function pesquisa(){
+    let dados = JSON.parse(localStorage.getItem("Dados"));
+    let input = document.getElementById('barraPesquisa');
+    let inputPesquisa = (input.value).toLocaleLowerCase();
+
+    const listaFiltrada = dados.filter((element, i)=> {
+        return element.titulo.toLocaleLowerCase().includes(inputPesquisa)
+    });
+    
+    console.log(listaFiltrada)
+    criarCardPesquisa(listaFiltrada);
+}
+
+const btnPesquisa = document.getElementById('pesquisar');
+btnPesquisa.onclick = pesquisa;
