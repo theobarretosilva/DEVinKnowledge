@@ -215,7 +215,6 @@ function pesquisa(){
         return element.titulo.toLocaleLowerCase().includes(inputPesquisa)
     });
     
-    console.log(listaFiltrada)
     criarCardPesquisa(listaFiltrada);
 }
 
