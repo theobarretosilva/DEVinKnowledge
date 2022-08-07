@@ -20,6 +20,8 @@ window.onclick = function(event){
     }
 }*/
 
+// import { openModal } from "../../modais/sucesso/sucesso.js";
+
 const form = document.getElementById('formulario');
 form.onsubmit = cadastrarDica;
 
@@ -30,7 +32,7 @@ function cadastrarDica(event){
 
     const id = localStorage.getItem("CardEditado");
     if(id){
-        mandarDicaDeVolta();
+        mandarDicaEditada();
     }
     else{
         const titulo = document.getElementById('titulo').value;
@@ -79,7 +81,7 @@ function criarCard(array){
             <div class="botoesCard">
                 <button value="${element.id}" id="deletaDica" onclick="deletaCard(${element.id})"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
                 <button value="${element.id}" id="editaDica" onclick="editaCard(${element.id})"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
-                <a href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
+                <a id="linkYT" value="${element.linkYT}" href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
             </div>
         </div>`
     });
@@ -87,6 +89,7 @@ function criarCard(array){
     listaCards.innerHTML = cards;
 
     popularTagsCateg();
+    desaparecerBtnVideo();
 }
 
 let tagTotal = 0;
@@ -134,9 +137,6 @@ function deletaCard(id){
     criarCard();
 }
 
-const btnDeleta = document.getElementById('deletaDica');
-btnDeleta.onclick = deletaCard;
-
 function editaCard(id){
     let dados = JSON.parse(localStorage.getItem("Dados"));
     let element = dados.find(card => card.id == id);
@@ -150,7 +150,7 @@ function editaCard(id){
     localStorage.setItem("CardEditado", element.id)
 }
 
-function mandarDicaDeVolta(){
+function mandarDicaEditada(){
     let dados = JSON.parse(localStorage.getItem("Dados"));
 
     const id = parseInt(localStorage.getItem("CardEditado"));
@@ -217,6 +217,27 @@ function pesquisa(){
     
     criarCardPesquisa(listaFiltrada);
 }
-
 const btnPesquisa = document.getElementById('pesquisar');
 btnPesquisa.onclick = pesquisa;
+
+function limparBarraPesquisa(){
+    let input = document.getElementById('barraPesquisa');
+
+    input.value = "";
+    
+    criarCard();
+}
+const btnLimpaPesquisa = document.getElementById('limparPesquisa');
+btnLimpaPesquisa.onclick = limparBarraPesquisa;
+
+function desaparecerBtnVideo(){
+    const linkBtnVideo = document.getElementById('linkYT');
+    const btnVideo = document.getElementById('videoDica');
+    const imgVideo = document.getElementById('imgVideoDica');
+
+    if(linkBtnVideo == ""){
+        linkBtnVideo.style.visibility = "hidden";
+        btnVideo.style.visibility = "hidden";
+        imgVideo.style.visibility = "hidden";
+    }
+}
