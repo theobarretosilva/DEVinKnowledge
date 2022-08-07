@@ -57,7 +57,7 @@
                 </div>
                 <br>
                 <div>
-                    <button class="button" type="submit">Enviar dica</button>
+                    <button id="buttonEnviar" class="button" type="submit">Enviar dica</button>
                     <button id="limparForm" type="reset">Limpar dados</button>
                 </div>
             </form>
@@ -119,6 +119,13 @@
                 </section>
             </div>
         </main>
+        <div id="modal" class="modal">
+            <div id="content" class="content">
+                <img src="modais/sucesso/sucesso.png" alt="Símbolo de sucesso">
+                <h3>A sua dica foi cadastrada com sucesso!</h3>
+                <button id="buttonOk">Ok!</button>
+            </div>
+        </div>
     </body>
-    <script type="module" src="assets/js/index.js"></script>
+    <script src="assets/js/index.js"></script>
 </html>

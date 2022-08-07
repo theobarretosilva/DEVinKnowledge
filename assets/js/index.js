@@ -1,33 +1,10 @@
-/*import {mudarModalSucesso} from "../../modals/sucesso/sucesso.js";
-import {modalSucesso} from "../../modals/sucesso/sucesso.js";
-
-const btnEnviar = document.getElementById('enviarDica');
-
-window.onclick = function(event){
-    if(event.target == modalSucesso){
-        mudarModalSucesso();
-    }
-}
-
-import {mudarModalEditando} from "../../modals/editando/editando.js";
-import {modalEditando} from "../../modals/editando/editando.js";
-
-const btnEditarCard = document.getElementById('editarDica');
-
-window.onclick = function(event){
-    if(event.targe == modalEditando){
-        mudarModalEditando();
-    }
-}*/
-
-// import { openModal } from "../../modais/sucesso/sucesso.js";
-
 const form = document.getElementById('formulario');
 form.onsubmit = cadastrarDica;
 
 document.body.onload = popularTagsCateg;
 
 function cadastrarDica(event){
+    event.preventDefault();
 
     const id = localStorage.getItem("CardEditado");
     if(id){
@@ -60,6 +37,7 @@ function cadastrarDica(event){
         localStorage.setItem("Dados", JSON.stringify(dados));
     }
 
+    abreModal();
     criarCard();
     limparForm();
 }
@@ -135,6 +113,7 @@ function criarCard(array) {
       section.appendChild(divButtons);
       listaCards.appendChild(section);
     });
+
 }
 
 function limparForm(){
@@ -344,4 +323,19 @@ function desaparecerBtnVideo(){
         btnVideo.style.visibility = "hidden";
         imgVideo.style.visibility = "hidden";
     }
+}
+
+
+function abreModal(){
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('content');
+    modal.style.display = "flex";
+    modalContent.style.display = "flex";
+}
+
+const btnFechar = document.getElementById('buttonOk');
+btnFechar.onclick = fechaModal;
+function fechaModal(){
+    const modal = document.getElementById('modal');
+    modal.style.display = "none";
 }
