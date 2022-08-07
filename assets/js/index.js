@@ -25,10 +25,9 @@ window.onclick = function(event){
 const form = document.getElementById('formulario');
 form.onsubmit = cadastrarDica;
 
-document.body.onload = criarCard;
+document.body.onload = popularTagsCateg;
 
 function cadastrarDica(event){
-    event.preventDefault();
 
     const id = localStorage.getItem("CardEditado");
     if(id){
@@ -65,32 +64,77 @@ function cadastrarDica(event){
     limparForm();
 }
 
-function criarCard(array){
+function criarCard(array) {
     const dados = JSON.parse(localStorage.getItem("Dados") || "[]");
-    const listaCards = document.getElementById('cardDicas');
-    let cards = "";
-
+    const listaCards = document.getElementById("cardDicas");
     listaCards.innerHTML = "";
 
-    dados.forEach(element => {
-        cards += 
-        `<section class="dica">
-            <h1 value=""${element.titulo} class="tituloDica" id="tituloDica">${element.titulo}</h1>
-            <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
-            <p><strong>Categoria: </strong>${element.categoria}</p>
-            <p class="descricao" id="descricaoCard">${element.descricao}</p>
-            <div class="botoesCard">
-                <button value="${element.id}" id="deletaDica" onclick="deletaCard(${element.id})"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
-                <button value="${element.id}" id="editaDica" onclick="editaCard(${element.id})"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
-                <a id="linkYT" value="${element.linkYT}" href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
-            </div>
-        </section>`
+    dados.forEach((element) => {
+      const section = document.createElement("section");
+      const h1Titulo = document.createElement("h1");
+      const pLinguagem = document.createElement("p");
+      const strongLinguagem = document.createElement("strong");
+      const pCategoria = document.createElement("p");
+      const strongCategoria = document.createElement("strong");
+      const pDescricao = document.createElement("p");
+      const divButtons = document.createElement("div");
+      const buttonEditar = document.createElement("button");
+      const imgEditar = document.createElement("img");
+      const buttonDeletar = document.createElement("button");
+      const imgDeletar = document.createElement("img");
+      const aVideo = document.createElement("a");
+      const imgVideo = document.createElement("img");
+      const buttonVideo = document.createElement("button");
+      section.classList.add("dica");
+      h1Titulo.classList.add("tituloDica");
+      pDescricao.classList.add("descricao");
+      divButtons.classList.add("botoesCard");
+      h1Titulo.id = "tituloDica";
+      pDescricao.id = "descricaoCard";
+      imgDeletar.id = "imgDeletaDica";
+      buttonDeletar.id = "deletaDica";
+      imgEditar.id = "imgEditaDica";
+      buttonEditar.id = "editaDica";
+      aVideo.id = "linkYT";
+      buttonVideo.id = "videoDica";
+      imgVideo.id = "imgVideoDica";
+      h1Titulo.innerText = element.titulo;
+      section.appendChild(h1Titulo);
+      strongLinguagem.innerText = "Linguagem/Skill:";
+      pLinguagem.appendChild(strongLinguagem);
+      pLinguagem.append(` ${element.linguagem}`);
+      section.appendChild(pLinguagem);
+      strongCategoria.innerText = "Categoria:";
+      pCategoria.appendChild(strongCategoria);
+      pCategoria.append(` ${element.categoria}`);
+      section.appendChild(pCategoria);
+      pDescricao.innerText = element.descricao;
+      section.appendChild(pDescricao);
+      imgDeletar.src = "./assets/imgs/deletaDica.png";
+      imgDeletar.alt = "Botão para deletar dica";
+      buttonDeletar.appendChild(imgDeletar);
+      buttonDeletar.value = element.id;
+      buttonDeletar.onclick = () => deletaCard(element.id);
+      divButtons.appendChild(buttonDeletar);
+      imgEditar.src = "./assets/imgs/editaDica.png";
+      imgEditar.alt = "Botão para editar dica";
+      buttonEditar.appendChild(imgEditar);
+      buttonEditar.value = element.id;
+      buttonEditar.onclick = () => editaCard(element.id);
+      divButtons.appendChild(buttonEditar);
+      if (element.linkYT) {
+        imgVideo.src = "./assets/imgs/videoDica.png";
+        imgVideo.alt = "Botão para ver o vídeo da dica";
+        aVideo.value = element.linkYT;
+        aVideo.href = element.linkYT;
+        aVideo.target = "_blank";
+        buttonVideo.appendChild(imgVideo);
+        aVideo.appendChild(buttonVideo);
+        divButtons.appendChild(aVideo);
+      }
+      section.appendChild(divButtons);
+      listaCards.appendChild(section);
     });
-
-    listaCards.innerHTML = cards;
-
-    popularTagsCateg();
-    desaparecerBtnVideo();
 }
 
 function limparForm(){
@@ -131,6 +175,8 @@ function popularTagsCateg(){
     document.getElementById('pBackEnd').innerText = tagBackEnd;
     document.getElementById('pFullStack').innerText = tagFullStack;
     document.getElementById('pSoftSkill').innerText = tagSoftSkill;
+
+    criarCard();
 }
 
 let barraDePesquisa = document.getElementById('barraPesquisa');
@@ -144,6 +190,7 @@ function deletaCard(id){
     localStorage.setItem("Dados", JSON.stringify(dadosDoCard));
 
     criarCard();
+    document.location.reload();
 }
 
 function editaCard(id){
@@ -188,31 +235,77 @@ function mandarDicaEditada(){
     localStorage.setItem("CardEditado", "")
 }
 
-function criarCardPesquisa(array){
+function criarCardPesquisa(array) {
     const dados = JSON.parse(localStorage.getItem("Dados") || "[]");
-    const listaCards = document.getElementById('cardDicas');
-    let cards = "";
-
+    const listaCards = document.getElementById("cardDicas");
     listaCards.innerHTML = "";
 
-    array.forEach(element => {
-        cards += 
-        `<section class="dica">
-            <h1 value=""${element.titulo} class="tituloDica" id="tituloDica">${element.titulo}</h1>
-            <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
-            <p><strong>Categoria: </strong>${element.categoria}</p>
-            <p class="descricao" id="descricaoCard">${element.descricao}</p>
-            <div class="botoesCard">
-                <button value="${element.id}" id="deletaDica" onclick="deletaCard(${element.id})"><img id="imgDeletaDica" src="./assets/imgs/deletaDica.png" alt="Botão para deletar dica"></button>
-                <button value="${element.id}" id="editaDica" onclick="editaCard(${element.id})"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
-                <a href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
-            </div>
-        </section>`
+    array.forEach((element) => {
+      const section = document.createElement("section");
+      const h1Titulo = document.createElement("h1");
+      const pLinguagem = document.createElement("p");
+      const strongLinguagem = document.createElement("strong");
+      const pCategoria = document.createElement("p");
+      const strongCategoria = document.createElement("strong");
+      const pDescricao = document.createElement("p");
+      const divButtons = document.createElement("div");
+      const buttonEditar = document.createElement("button");
+      const imgEditar = document.createElement("img");
+      const buttonDeletar = document.createElement("button");
+      const imgDeletar = document.createElement("img");
+      const aVideo = document.createElement("a");
+      const imgVideo = document.createElement("img");
+      const buttonVideo = document.createElement("button");
+      section.classList.add("dica");
+      h1Titulo.classList.add("tituloDica");
+      pDescricao.classList.add("descricao");
+      divButtons.classList.add("botoesCard");
+      h1Titulo.id = "tituloDica";
+      pDescricao.id = "descricaoCard";
+      imgDeletar.id = "imgDeletaDica";
+      buttonDeletar.id = "deletaDica";
+      imgEditar.id = "imgEditaDica";
+      buttonEditar.id = "editaDica";
+      aVideo.id = "linkYT";
+      buttonVideo.id = "videoDica";
+      imgVideo.id = "imgVideoDica";
+      h1Titulo.innerText = element.titulo;
+      section.appendChild(h1Titulo);
+      strongLinguagem.innerText = "Linguagem/Skill:";
+      pLinguagem.appendChild(strongLinguagem);
+      pLinguagem.append(` ${element.linguagem}`);
+      section.appendChild(pLinguagem);
+      strongCategoria.innerText = "Categoria:";
+      pCategoria.appendChild(strongCategoria);
+      pCategoria.append(` ${element.categoria}`);
+      section.appendChild(pCategoria);
+      pDescricao.innerText = element.descricao;
+      section.appendChild(pDescricao);
+      imgDeletar.src = "./assets/imgs/deletaDica.png";
+      imgDeletar.alt = "Botão para deletar dica";
+      buttonDeletar.appendChild(imgDeletar);
+      buttonDeletar.value = element.id;
+      buttonDeletar.onclick = () => deletaCard(element.id);
+      divButtons.appendChild(buttonDeletar);
+      imgEditar.src = "./assets/imgs/editaDica.png";
+      imgEditar.alt = "Botão para editar dica";
+      buttonEditar.appendChild(imgEditar);
+      buttonEditar.value = element.id;
+      buttonEditar.onclick = () => editaCard(element.id);
+      divButtons.appendChild(buttonEditar);
+      if (element.linkYT) {
+        imgVideo.src = "./assets/imgs/videoDica.png";
+        imgVideo.alt = "Botão para ver o vídeo da dica";
+        aVideo.value = element.linkYT;
+        aVideo.href = element.linkYT;
+        aVideo.target = "_blank";
+        buttonVideo.appendChild(imgVideo);
+        aVideo.appendChild(buttonVideo);
+        divButtons.appendChild(aVideo);
+      }
+      section.appendChild(divButtons);
+      listaCards.appendChild(section);
     });
-
-    listaCards.innerHTML = cards;
-
-    popularTagsCateg();
 }
 
 function pesquisa(){
@@ -244,7 +337,9 @@ function desaparecerBtnVideo(){
     const btnVideo = document.getElementById('videoDica');
     const imgVideo = document.getElementById('imgVideoDica');
 
-    if(linkBtnVideo == ""){
+    const hrefLinkBtnVideo = linkBtnVideo.href;
+
+    if(hrefLinkBtnVideo === "http://127.0.0.1:5500/index.html?"){
         linkBtnVideo.style.visibility = "hidden";
         btnVideo.style.visibility = "hidden";
         imgVideo.style.visibility = "hidden";

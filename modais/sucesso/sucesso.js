@@ -8,4 +8,10 @@
 //     }
 // }
 
-<script src="sucesso.js"></script>
+const btn = document.querySelector('button');
+btn.addEventListener('click', abreModal)
+
+function abreModal(e){
+    const modal = document.getElementById('modal');
+    modal.style.display = "flex"
+}

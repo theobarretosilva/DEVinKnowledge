@@ -1,15 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Arbutus+Slab&display=swap');
 
-#modal{
+.modal{
     display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal .content{
@@ -18,7 +10,6 @@
     padding: 20px;
     border-radius: 20px;
     width: 20%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
