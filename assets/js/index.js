@@ -62,6 +62,7 @@ function cadastrarDica(event){
     }
 
     criarCard();
+    limparForm();
 }
 
 function criarCard(array){
@@ -73,7 +74,7 @@ function criarCard(array){
 
     dados.forEach(element => {
         cards += 
-        `<div class="dica">
+        `<section class="dica">
             <h1 value=""${element.titulo} class="tituloDica" id="tituloDica">${element.titulo}</h1>
             <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
             <p><strong>Categoria: </strong>${element.categoria}</p>
@@ -83,13 +84,21 @@ function criarCard(array){
                 <button value="${element.id}" id="editaDica" onclick="editaCard(${element.id})"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
                 <a id="linkYT" value="${element.linkYT}" href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
             </div>
-        </div>`
+        </section>`
     });
 
     listaCards.innerHTML = cards;
 
     popularTagsCateg();
     desaparecerBtnVideo();
+}
+
+function limparForm(){
+    document.getElementById('titulo').value = "";
+    document.getElementById('linguagem').value = "";
+    document.getElementById('inputCategoria').value = "";
+    document.getElementById('descricao').value = "";
+    document.getElementById('inputLink').value = "";
 }
 
 let tagTotal = 0;
@@ -188,7 +197,7 @@ function criarCardPesquisa(array){
 
     array.forEach(element => {
         cards += 
-        `<div class="dica">
+        `<section class="dica">
             <h1 value=""${element.titulo} class="tituloDica" id="tituloDica">${element.titulo}</h1>
             <p><strong>Linguagem/Skill: </strong>${element.linguagem}</p>
             <p><strong>Categoria: </strong>${element.categoria}</p>
@@ -198,7 +207,7 @@ function criarCardPesquisa(array){
                 <button value="${element.id}" id="editaDica" onclick="editaCard(${element.id})"><img id="imgEditaDica" src="./assets/imgs/editaDica.png" alt="Botão para editar dica"></button>
                 <a href="${element.linkYT}" target="_blank"><button id="videoDica"><img id="imgVideoDica" src="./assets/imgs/videoDica.png" alt="Botão para ver o vídeo da dica"></button></a>
             </div>
-        </div>`
+        </section>`
     });
 
     listaCards.innerHTML = cards;
