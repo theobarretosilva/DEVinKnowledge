@@ -1,3 +1,4 @@
+<center><img src="https://github.com/theobarretosilva/DEVinKnowledge/blob/main/assets/imgs/Logo%20-%20DEVinKnowledge.png"></center>
 <h1 align="center"> DEVinKnowledge </h1>
 
 ## 💻 Sobre o projeto
