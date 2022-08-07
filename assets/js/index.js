@@ -40,6 +40,7 @@ function cadastrarDica(event){
     abreModal();
     criarCard();
     limparForm();
+
 }
 
 function criarCard(array) {
@@ -92,7 +93,7 @@ function criarCard(array) {
       imgDeletar.alt = "Botão para deletar dica";
       buttonDeletar.appendChild(imgDeletar);
       buttonDeletar.value = element.id;
-      buttonDeletar.onclick = () => deletaCard(element.id);
+      buttonDeletar.onclick = () => abrirModalDeletaCard(element.id);
       divButtons.appendChild(buttonDeletar);
       imgEditar.src = "./assets/imgs/editaDica.png";
       imgEditar.alt = "Botão para editar dica";
@@ -162,14 +163,36 @@ let barraDePesquisa = document.getElementById('barraPesquisa');
 let dados = JSON.parse(localStorage.getItem("Dados"));
 let tituloCard = document.getElementsByClassName('tituloDica');
 
-function deletaCard(id){
-    let dados = JSON.parse(localStorage.getItem("Dados"));
-    let dadosDoCard = dados.filter(card => card.id != id)
+function abrirModalDeletaCard(id){
+    const modalCertezaDeletar = document.getElementById('modalCertezaDeletar');
+    const modalContentCertezaDeletar = document.getElementById('contentCertezaDeletar');
 
-    localStorage.setItem("Dados", JSON.stringify(dadosDoCard));
+    modalCertezaDeletar.style.display = "flex";
+    modalContentCertezaDeletar.style.display = "flex";
 
-    criarCard();
-    document.location.reload();
+    const btnSim = document.getElementById('simCertezaDeletar');
+    const btnNao = document.getElementById('naoCertezaDeletar');
+
+    
+    const sim = () => {
+        let dados = JSON.parse(localStorage.getItem("Dados"));
+        let dadosDoCard = dados.filter(card => card.id != id)
+
+        localStorage.setItem("Dados", JSON.stringify(dadosDoCard));
+
+        modalCertezaDeletar.style.display = "none";
+        modalContentCertezaDeletar.style.display = "none";
+
+        criarCard();
+    }
+    btnSim.onclick = sim;
+
+    
+    let nao = () => {
+        modalCertezaDeletar.style.display = "none";
+        modalContentCertezaDeletar.style.display = "none";
+    }
+    btnNao.onclick = nao;
 }
 
 function editaCard(id){
@@ -183,6 +206,8 @@ function editaCard(id){
     document.getElementById('inputLink').value = element.linkYT;
 
     localStorage.setItem("CardEditado", element.id)
+
+    abreModalEditando();
 }
 
 function mandarDicaEditada(){
@@ -264,7 +289,7 @@ function criarCardPesquisa(array) {
       imgDeletar.alt = "Botão para deletar dica";
       buttonDeletar.appendChild(imgDeletar);
       buttonDeletar.value = element.id;
-      buttonDeletar.onclick = () => deletaCard(element.id);
+      buttonDeletar.onclick = () => abrirModalDeletaCard(element.id);
       divButtons.appendChild(buttonDeletar);
       imgEditar.src = "./assets/imgs/editaDica.png";
       imgEditar.alt = "Botão para editar dica";
@@ -338,4 +363,28 @@ btnFecharModal.onclick = fechaModal;
 function fechaModal(){
     const modal = document.getElementById('modal');
     modal.style.display = "none";
+
+    document.location.reload();
+}
+
+function abreModalEditando(){
+    const modalEditando = document.getElementById('modalEditando');
+    const modalContentEditando = document.getElementById('contentEditando');
+
+    modalEditando.style.display = "flex";
+    modalContentEditando.style.display = "flex";
+}
+
+const btnFecharModalEditando = document.getElementById('buttonOkEditando');
+btnFecharModalEditando.onclick = fechaModalEditando;
+function fechaModalEditando(){
+    const modalEditando = document.getElementById('modalEditando');
+    modalEditando.style.display = "none";
+}
+
+function abreModalCertezaDeletar(){
+    const modalCertezaDeletar = document.getElementById('modalCertezaDeletar');
+    const modalContentCertezaDeletar = document.getElementById('contentCertezaDeletar');
+    const btnNao = document.getElementById('naoCertezDeletar');
+    
 }
