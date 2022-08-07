@@ -333,8 +333,8 @@ function abreModal(){
     modalContent.style.display = "flex";
 }
 
-const btnFechar = document.getElementById('buttonOk');
-btnFechar.onclick = fechaModal;
+const btnFecharModal = document.getElementById('buttonOk');
+btnFecharModal.onclick = fechaModal;
 function fechaModal(){
     const modal = document.getElementById('modal');
     modal.style.display = "none";
