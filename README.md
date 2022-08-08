@@ -18,6 +18,10 @@ O website conta com as seguintes funções:
 
 Projeto desenvolvido em 1 semana, com impulsionamento do curso DEVinHouse, por parte do LAB 365.
 
+## 🎨 Layout
+
+<img src="https://github.com/theobarretosilva/DEVinKnowledge/blob/main/assets/imgs/PaginaWeb.png">
+
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
